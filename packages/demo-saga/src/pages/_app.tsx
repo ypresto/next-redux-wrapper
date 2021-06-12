@@ -7,7 +7,7 @@ class WrappedApp extends App<AppInitialProps> {
     public static getInitialProps = wrapper.getInitialAppProps(store => async ({Component, ctx}: AppContext) => {
         // 1. Wait for all page actions to dispatch
         const pageProps = {
-            ...(Component.getInitialProps ? await Component.getInitialProps({...ctx, store}) : {}),
+            ...(Component.getInitialProps ? await Component.getInitialProps(ctx) : {}),
         };
 
         // 2. Stop the saga if on server
